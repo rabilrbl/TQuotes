@@ -1,4 +1,4 @@
-package main
+package tquotes
 
 import (
 	"encoding/json"
@@ -16,7 +16,7 @@ func main() {
 	res, count := 0, 0
 	// loop will run until we get proper quote from api till 15 attempts
 	for res == 0 {
-		quotes := quote() // quote function
+		quotes := Quote() // quote function
 		count += 1        //counting attempts
 		// Check if received api value is not empty
 		// and
@@ -48,7 +48,7 @@ func main() {
 }
 
 // Fetch quotes from API and returns JSON like slices
-func quote() map[string]string {
+func Quote() map[string]string {
 	var client = &http.Client{}
 
 	var data = strings.NewReader(`method=getQuote&format=json&param=ms&lang=en`)
